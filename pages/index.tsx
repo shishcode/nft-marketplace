@@ -10,13 +10,17 @@ import { startAnimation } from '../util/jsAnimation';
  * Free to customize as you see fit.
  */
 const Home: NextPage = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      startAnimation(canvasRef.current);
+    const canvas = canvasRef.current;
+
+    if (canvas) {
+      // pass the reference to your canvas element to the startAnimation function
+      startAnimation(canvas);
     }
-  }, []);
+  }, []); // this effect will run once after the first render
+
   return (
     <>
       <canvas ref={canvasRef} id="c"></canvas>
